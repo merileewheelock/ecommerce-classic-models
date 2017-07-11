@@ -2,9 +2,10 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import $ from 'jquery';
-import Home from './containers/Home';
-import NavBar from './components/NavBar';
-import Carousel from './components/Carousel';
+// import Home from './containers/Home';
+// import NavBar from './components/NavBar';
+// import Carousel from './components/Carousel';
+import App from './App';
 
 // Go get the createStore method from the redux module
 import { createStore } from 'redux';
@@ -20,11 +21,7 @@ const theStore = createStore(reducers);
 // ReactDOM.render takes 2 args... 1. What, 2. Where
 ReactDOM.render(
 	<Provider store={theStore}>
-		<div>
-			<NavBar />
-			<Home />
-			<Carousel />
-		</div>
+		<App />
 	</Provider>,
 	document.getElementById('root')
 );

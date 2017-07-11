@@ -14,18 +14,4 @@ class Home extends Component{
 	}
 }
 
-// All containers that need access to state will have this function.
-// We are creating a mapping between redux state and this component's props.
-// Mapping the redux state to this component's props
-function mapStateToProps(state){
-	// mapStateToProps returns an object with each piece of state we need
-	return{
-		// From our master Reducer, we have a "state" object. NOT RELATED to react state at all.
-		// Inside of that state object, we have a property: students.
-		// This exists because we made it a property in the root reducer.
-		students: state.students
-	}
-}
-
-// INSTEAD of exporting the class (component), we export connect, which is getting the component
-export default connect(mapStateToProps)(Home);
+export default Home;
