@@ -1,8 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
+import $ from 'jquery';
 import Home from './containers/Home';
 import NavBar from './components/NavBar';
+import Carousel from './components/Carousel';
 
 // Go get the createStore method from the redux module
 import { createStore } from 'redux';
@@ -21,6 +23,7 @@ ReactDOM.render(
 		<div>
 			<NavBar />
 			<Home />
+			<Carousel />
 		</div>
 	</Provider>,
 	document.getElementById('root')
