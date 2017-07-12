@@ -8,7 +8,33 @@ class Home extends Component{
 	render(){
 		return(
 			<div className="container">
-				<h1>Cars and stuff!</h1>
+				<h1>CLASSIC MODELS</h1>
+				<div className="row text-center">
+					<div className="home-pics col-md-3 col-sm-4 col-xs-6">
+						<img src="http://via.placeholder.com/200x200" />
+					</div>
+					<div className="home-pics col-md-3 col-sm-4 col-xs-6">
+						<img src="http://via.placeholder.com/200x200" />
+					</div>
+					<div className="home-pics col-md-3 col-sm-4 col-xs-6">
+						<img src="http://via.placeholder.com/200x200" />
+					</div>
+					<div className="home-pics col-md-3 col-sm-4 col-xs-6">
+						<img src="http://via.placeholder.com/200x200" />
+					</div>
+					<div className="home-pics col-md-3 col-sm-4 col-xs-6">
+						<img src="http://via.placeholder.com/200x200" />
+					</div>
+					<div className="home-pics col-md-3 col-sm-4 col-xs-6">
+						<img src="http://via.placeholder.com/200x200" />
+					</div>
+					<div className="home-pics col-md-3 col-sm-4 col-xs-6">
+						<img src="http://via.placeholder.com/200x200" />
+					</div>
+					<div className="home-pics col-md-3 col-sm-4 col-xs-6">
+						<img src="http://via.placeholder.com/200x200" />
+					</div>
+				</div>
 			</div>
 		)
 	}
