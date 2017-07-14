@@ -152,6 +152,11 @@ input {
   width: 300px;
 }
 
+/* line 12, ../../compass/sass/_register.scss */
+.badEmail {
+  color: red;
+}
+
 /* line 7, ../../compass/sass/styles.scss */
 body {
   margin: 0;

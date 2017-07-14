@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Form, FormGroup, ControlLabel, FormControl, Button, Col } from 'react-bootstrap';
-import { bindActionCreators } from 'redux'
+import { bindActionCreators } from 'redux';
+// import $ from 'jquery';
 
 // Because this is a container, we need connect from react-redux
 import { connect } from 'react-redux';
@@ -11,6 +12,9 @@ import RegisterAction from '../actions/RegisterAction';
 class Register extends Component{
 	constructor(props) {
 		super(props);
+		this.state = {
+			registerMessage: ""
+		}
 		this.handleRegistration = this.handleRegistration.bind(this);
 	}
 
@@ -20,15 +24,17 @@ class Register extends Component{
 		var name = event.target[0].value;
 		var email = event.target[1].value;
 		var accountType = event.target[2].value;
-		var password = event.target[3].value;
-		var city = event.target[4].value;
-		var state = event.target[5].value;
-		var salesRep = event.target[6].value;
+		var username = event.target[3].value;
+		var password = event.target[4].value;
+		var city = event.target[5].value;
+		var state = event.target[6].value;
+		var salesRep = event.target[7].value;
 		// console.log(name);
 		this.props.registerAction({
 			name: name,
 			email: email,
 			accountType: accountType,
+			username: username,
 			password: password,
 			city: city,
 			state: state,
@@ -36,10 +42,30 @@ class Register extends Component{
 		});
 	}
 
+	componentWillReceiveProps(nextProps) {
+		if (this.props.registerResponse.msg == 'userInserted'){
+			this.props.history.push('/');
+		}
+	}
+
+	componentWillReceiveProps(nextProps) {
+		// console.log(nextProps)
+		if (nextProps.registerResponse.msg == 'userAlreadyExists'){
+			// console.log("Username already exists")
+			this.setState({
+				registerMessage: "Username already exists"
+			})
+		}
+	}
+
 	render(){
+
+		// console.log(this.props.registerResponse)
+		
 		return(
 			<div className="container register-wrapper">
 				<h3>CREATE AN ACCOUNT</h3>
+				<h3 className="badEmail text-center">{this.state.registerMessage}</h3>
 				<Form horizontal onSubmit={this.handleRegistration}>
 					<FormGroup controlId="formHorizontalName">
 						<Col componentClass={ControlLabel} sm={2}>
@@ -67,7 +93,15 @@ class Register extends Component{
 			                    <option value="employee">Employee</option>
 			                </FormControl>    
 			            </Col>
-			            </FormGroup>
+			        </FormGroup>
+			        <FormGroup controlId="formHorizontalName">
+						<Col componentClass={ControlLabel} sm={2}>
+							Username
+						</Col>
+						<Col sm={8}>
+							<FormControl type="text" name="username" placeholder="Username" />
+						</Col>
+					</FormGroup>
 					<FormGroup controlId="formHorizontalName">
 						<Col componentClass={ControlLabel} sm={2}>
 							Password
@@ -113,11 +147,17 @@ class Register extends Component{
 	}
 }
 
+function mapStateToProps(state){
+	return{
+		registerResponse: state.registerReducer
+	}
+}
+
 function mapDispatchToProps(dispatch){
 	return bindActionCreators({
 		registerAction: RegisterAction
 	}, dispatch)
 }
 
-export default connect(null, mapDispatchToProps)(Register);
+export default connect(mapStateToProps, mapDispatchToProps)(Register);
 // export default Register;
