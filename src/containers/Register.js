@@ -1,73 +1,93 @@
-import React, { Component } from 'react';
-import { Form, FormGroup, ControlLabel, FormControl, Button, Col } from 'react-bootstrap';
-import { bindActionCreators } from 'redux';
-// import $ from 'jquery';
-
-// Because this is a container, we need connect from react-redux
-import { connect } from 'react-redux';
-
-// get the registerAction function which runs on submission
+import React, {Component} from 'react';
+import { Form, FormGroup, ControlLabel, FormControl, Button, Col ,MenuItem} from 'react-bootstrap'
+// Our action needs bindActionCreators from redux
+import  {bindActionCreators} from 'redux';
+// Get the registerAction function which runs on submission
 import RegisterAction from '../actions/RegisterAction';
+// Because this is a container, we need connect from react-redux!
+import {connect} from 'react-redux';
+
 
 class Register extends Component{
 	constructor(props) {
 		super(props);
 		this.state = {
-			registerMessage: ""
+			registerMessage: "",
+			nameError: null,
+			emailError: null,
+			formError: false
 		}
 		this.handleRegistration = this.handleRegistration.bind(this);
 	}
 
 	handleRegistration(event){
 		event.preventDefault();
-		console.log("User submitted the form!");
-		var name = event.target[0].value;
-		var email = event.target[1].value;
-		var accountType = event.target[2].value;
-		var username = event.target[3].value;
-		var password = event.target[4].value;
-		var city = event.target[5].value;
-		var state = event.target[6].value;
-		var salesRep = event.target[7].value;
+		// console.log("User SUbmitted the form!!")
+		var name = event.target[0].value
+		var email = event.target[1].value
+		var accountType = "Customer"
+		var password = event.target[3].value
+		var city = event.target[4].value
+		var state = event.target[5].value
+		var salesRep = event.target[6].value
+		var error = false;
+
+		//Name
+		if(name.length < 3){
+			var nameError = "error"; 
+			error=true;
+		}
+		else{ 
+			var nameError = "success"
+		}
+
+		//Email
+		if(email.length < 3){var emailError = "error"; error=true}
+		else{var emailError = "success"}
+
+
 		// console.log(name);
-		this.props.registerAction({
-			name: name,
-			email: email,
-			accountType: accountType,
-			username: username,
-			password: password,
-			city: city,
-			state: state,
-			salesRep: salesRep
-		});
-	}
-
-	componentWillReceiveProps(nextProps) {
-		if (this.props.registerResponse.msg == 'userInserted'){
-			this.props.history.push('/');
-		}
-	}
-
-	componentWillReceiveProps(nextProps) {
-		// console.log(nextProps)
-		if (nextProps.registerResponse.msg == 'userAlreadyExists'){
-			// console.log("Username already exists")
+		if(error){
 			this.setState({
-				registerMessage: "Username already exists"
-			})
+				formError: true,
+				emailError: emailError,
+				nameError: nameError
+			}) 
+		}else{
+			this.props.registerAction({
+				name: name,
+				email: email,
+				accountType: accountType,
+				password: password,
+				city: city,
+				state: state,
+				salesRep: salesRep
+			});
 		}
+	}
+
+	componentWillReceiveProps(nextProps) {
+		console.log("=======================")
+		console.log(nextProps.registerResponse)
+		console.log("=======================")
+
+		if(nextProps.registerResponse.msg === 'userInserted'){
+			this.props.history.push('/');
+		}else if(nextProps.registerResponse.msg === 'userAlreadyExists'){
+			console.log("User name taken!")
+			this.setState({
+				registerMessage: "Sorry, this username is already taken."
+			})
+		}		
 	}
 
 	render(){
 
-		// console.log(this.props.registerResponse)
-		
 		return(
 			<div className="container register-wrapper">
-				<h3>CREATE AN ACCOUNT</h3>
-				<h3 className="badEmail text-center">{this.state.registerMessage}</h3>
+				<h1>{this.state.registerMessage}</h1>
 				<Form horizontal onSubmit={this.handleRegistration}>
-					<FormGroup controlId="formHorizontalName">
+					<FormGroup controlId="formHorizontalName" validationState={this.state.nameError}>
 						<Col componentClass={ControlLabel} sm={2}>
 							Name
 						</Col>
@@ -75,31 +95,20 @@ class Register extends Component{
 							<FormControl type="text" name="fullName" placeholder="Full Name" />
 						</Col>
 					</FormGroup>
-					<FormGroup controlId="formHorizontalName">
+					<FormGroup controlId="formHorizontalName" validationState={this.state.emailError}>
 						<Col componentClass={ControlLabel} sm={2}>
 							Email
 						</Col>
 						<Col sm={8}>
-							<FormControl type="text" name="email" placeholder="Email" />
+							<FormControl type="email" name="email" placeholder="Email" />
 						</Col>
 					</FormGroup>
-					<FormGroup controlId="formAccountSelect">
-			            <Col componentClass={ControlLabel} sm={2}>
-			                Account Type
-			            </Col>
-			            <Col sm={8}>
-			                <FormControl componentClass="select" placeholder="formAccountSelect">
-			                    <option value="customer">Customer</option>
-			                    <option value="employee">Employee</option>
-			                </FormControl>    
-			            </Col>
-			        </FormGroup>
-			        <FormGroup controlId="formHorizontalName">
+					<FormGroup controlId="formHorizontalName">
 						<Col componentClass={ControlLabel} sm={2}>
-							Username
+							Account Type
 						</Col>
 						<Col sm={8}>
-							<FormControl type="text" name="username" placeholder="Username" />
+							<FormControl type="text" name="type" value="Customer" disabled />
 						</Col>
 					</FormGroup>
 					<FormGroup controlId="formHorizontalName">
@@ -128,14 +137,14 @@ class Register extends Component{
 					</FormGroup>
 					<FormGroup controlId="formHorizontalName">
 						<Col componentClass={ControlLabel} sm={2}>
-							Sales Representative
+							Sales Rep
 						</Col>
 						<Col sm={8}>
-							<FormControl type="text" name="employee" placeholder="Employee you work with" />
+							<FormControl type="text" name="employee" placeholder="Employee you worked with" />
 						</Col>
 					</FormGroup>
 					<FormGroup>
-						<Col smOffset={2} sm={10}>
+						<Col smOffset={2} sm={8}>
 							<Button bsStyle="primary" bsSize="small" type="submit">
 								Register
 							</Button>
@@ -159,5 +168,5 @@ function mapDispatchToProps(dispatch){
 	}, dispatch)
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Register);
 // export default Register;
+export default connect(mapStateToProps,mapDispatchToProps)(Register);

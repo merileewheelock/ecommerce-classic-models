@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import $ from 'jquery';
+// import $ from 'jquery';
 // import Home from './containers/Home';
 // import NavBar from './components/NavBar';
 // import Carousel from './components/Carousel';

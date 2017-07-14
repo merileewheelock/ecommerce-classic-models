@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 
 import Home from './containers/Home';
-import NavBar from './components/NavBar';
+import NavBar from './containers/NavBar';
 import Register from './containers/Register';
 import Login from './containers/Login';
 

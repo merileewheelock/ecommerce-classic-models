@@ -16,10 +16,10 @@ class Slick extends Component{
 		return(
 			<div>
 				<Slider {...settings}>
-					<div className="slick-image"><img src="/images/ferrari.jpg" /></div>
-					<div className="slick-image"><img src="/images/train1.jpg" /></div>
-					<div className="slick-image"><img src="/images/lamb.jpg" /></div>
-					<div className="slick-image"><img src="/images/schooner.jpg" /></div>
+					<div className="slick-image"><img src="/images/ferrari.jpg" alt="ferrari" /></div>
+					<div className="slick-image"><img src="/images/train1.jpg" alt="train" /></div>
+					<div className="slick-image"><img src="/images/lamb.jpg" alt="lamb" /></div>
+					<div className="slick-image"><img src="/images/schooner.jpg" alt="schooner" /></div>
 				</Slider>
 			</div>
 		)
