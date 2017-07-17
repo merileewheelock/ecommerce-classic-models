@@ -6,6 +6,7 @@ import NavBar from './containers/NavBar';
 import Slick from './components/Slick';
 import Register from './containers/Register';
 import Login from './containers/Login';
+import ProductLine from './containers/ProductLine';
 
 
 class App extends Component {
@@ -17,8 +18,9 @@ class App extends Component {
 					<Route exact path="/" component={Slick} />
 					<div className="container main">
 						<Route exact path="/" component={Home} />
-						<Route exact path="/Register" component={Register} />
-						<Route exact path="/Login" component={Login} />
+						<Route exact path="/register" component={Register} />
+						<Route exact path="/login" component={Login} />
+						<Route path="/shop/:productLine" component={ProductLine}/>
 					</div>
 				</div>
 			</Router>

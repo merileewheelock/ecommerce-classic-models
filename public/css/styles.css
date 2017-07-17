@@ -177,6 +177,32 @@ i {
   width: 100vw;
 }
 
+/* line 1, ../../compass/sass/_home.scss */
+.pl-images {
+  margin-bottom: 10px;
+}
+/* line 3, ../../compass/sass/_home.scss */
+.pl-images img {
+  height: 256px;
+  width: 256px;
+  border: 5px solid #e6e6e6;
+}
+/* line 7, ../../compass/sass/_home.scss */
+.pl-images img:hover {
+  border-color: #1D5E9A;
+}
+/* line 11, ../../compass/sass/_home.scss */
+.pl-images a {
+  display: block;
+  cursor: pointer;
+}
+/* line 15, ../../compass/sass/_home.scss */
+.pl-images .text {
+  color: #121212;
+  margin-bottom: 15px;
+  font-size: 22px;
+}
+
 /* line 1, ../../compass/sass/_register.scss */
 .register-field, .login-field {
   margin-top: 10px;
@@ -196,7 +222,19 @@ input {
   color: red;
 }
 
-/* line 8, ../../compass/sass/styles.scss */
+/* line 1, ../../compass/sass/_products.scss */
+.table-head {
+  color: blue;
+  text-decoration: none;
+  cursor: pointer;
+  font-size: 18px;
+}
+/* line 6, ../../compass/sass/_products.scss */
+.table-head:hover {
+  text-decoration: underline;
+}
+
+/* line 9, ../../compass/sass/styles.scss */
 body {
   margin: 0;
   padding: 0;
@@ -204,22 +242,22 @@ body {
   font-family: 'Open Sans', sans-serif;
 }
 
-/* line 15, ../../compass/sass/styles.scss */
+/* line 16, ../../compass/sass/styles.scss */
 body, html {
   overflow-x: hidden;
 }
 
-/* line 19, ../../compass/sass/styles.scss */
+/* line 20, ../../compass/sass/styles.scss */
 .main {
   margin-top: 50px;
 }
 
-/* line 23, ../../compass/sass/styles.scss */
+/* line 24, ../../compass/sass/styles.scss */
 .home-pics {
   margin-top: 20px;
 }
 
-/* line 27, ../../compass/sass/styles.scss */
+/* line 28, ../../compass/sass/styles.scss */
 h3 {
   margin-bottom: 25px;
 }

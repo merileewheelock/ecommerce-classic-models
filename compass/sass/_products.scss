@@ -1,0 +1,9 @@
+.table-head{
+	color: blue;
+	text-decoration: none;
+	cursor: pointer;
+	font-size: 18px;
+	&:hover{
+		text-decoration: underline;
+	}
+}
