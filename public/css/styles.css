@@ -234,6 +234,11 @@ input {
   text-decoration: underline;
 }
 
+/* line 11, ../../compass/sass/_products.scss */
+.msrp {
+  text-decoration: line-through;
+}
+
 /* line 9, ../../compass/sass/styles.scss */
 body {
   margin: 0;
