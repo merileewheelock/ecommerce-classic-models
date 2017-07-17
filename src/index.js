@@ -1,9 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 // import $ from 'jquery';
-// import Home from './containers/Home';
-// import NavBar from './components/NavBar';
-// import Carousel from './components/Carousel';
 import App from './App';
 
 // Go get the createStore and applyMiddleware method from the redux module

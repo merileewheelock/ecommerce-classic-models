@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route } from 'react-router-dom';
 
 import Home from './containers/Home';
 import NavBar from './containers/NavBar';
+import Slick from './components/Slick';
 import Register from './containers/Register';
 import Login from './containers/Login';
 
@@ -13,6 +14,7 @@ class App extends Component {
 			<Router>
 				<div className="App">
 					<NavBar />
+					<Route exact path="/" component={Slick} />
 					<div className="container main">
 						<Route exact path="/" component={Home} />
 						<Route exact path="/Register" component={Register} />

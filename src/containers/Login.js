@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import { Form, FormGroup, ControlLabel, FormControl, Button, Col ,MenuItem} from 'react-bootstrap'
+import { Form, FormGroup, ControlLabel, FormControl, Button, Col, MenuItem} from 'react-bootstrap'
 // Our action needs bindActionCreators from redux
 import  {bindActionCreators} from 'redux';
 // Get the registerAction function which runs on submission
@@ -33,12 +33,12 @@ class Login extends Component{
 			error=true;
 		}
 		else{ 
-			var passwordError = "null"
+			passwordError = "null"
 		}
 
 		//Email
 		if(email.length < 3){var emailError = "error"; error=true}
-		else{var emailError = "success"}
+		else{emailError = "success"}
 
 
 		// console.log(name);

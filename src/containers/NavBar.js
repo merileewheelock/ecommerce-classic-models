@@ -1,6 +1,5 @@
 import React, {Component} from 'react'
-import {Link, Route} from 'react-router-dom'
-import Slick from '../components/Slick'
+import {Link} from 'react-router-dom'
 import $ from 'jquery'
 import {connect} from 'react-redux'
 
@@ -33,16 +32,17 @@ class NavBar extends Component{
 			)
 		})
 	
-	if(this.props.registerInfo.name == undefined){
+	if(this.props.registerInfo.name === undefined){
 		var rightBar = [
 			<li key="1" className="text-right"><Link to="/login">Login</Link></li>,
 			<li key="2" className="text-right"><Link to="/register">Register</Link></li>,
 			<li key="3" className="text-right"><Link to="/cart">(0) items in your cart | ($0.00)</Link></li>		
 		]
 	}else{
-		var rightBar = [
+		rightBar = [
 			<li key="1" className="text-right">Welcome, {this.props.registerInfo.name}</li>,
-			<li key="2" className="text-right"><Link to="/cart">(0) items in your cart | ($0.00)</Link></li>		
+			<li key="2" className="text-right"><Link to="/cart">(0) items in your cart | ($0.00)</Link></li>,		
+			<li key="3" className="text-right"><Link to="/logout">Logout</Link></li>
 		]		
 	}
 
@@ -72,7 +72,6 @@ class NavBar extends Component{
 						</ul>
 					</div>
 				</nav>
-				<Route exact path="/" component={Slick} />
 			</div>
 		)
 	}

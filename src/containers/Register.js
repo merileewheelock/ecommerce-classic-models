@@ -38,12 +38,12 @@ class Register extends Component{
 			error=true;
 		}
 		else{ 
-			var nameError = "success"
+			nameError = "success"
 		}
 
 		//Email
 		if(email.length < 3){var emailError = "error"; error=true}
-		else{var emailError = "success"}
+		else{emailError = "success"}
 
 
 		// console.log(name);
