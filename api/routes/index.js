@@ -42,6 +42,10 @@ router.get('/productlines/:productLines/get', (req, res)=>{
 	})
 })
 
+router.post('/updateCart', (req, res)=>{
+	res.json({productNumber: req.body.productCode})
+});
+
 router.post('/register', (req, res)=>{
 	const name = req.body.name;
 	const email = req.body.email;
@@ -130,9 +134,10 @@ router.post('/login', (req, res)=>{
 			if (checkHash){
 				// This is the droid we're looking for
 				// Log them in... i.e. create a token, update it, send it back
-				const updateToken = `Update users SET token=?, token_exp=DATE_ADD(NOW(), INTERVAL 1 HOUR)`;
+				const updateToken = `Update users SET token=?, token_exp=DATE_ADD(NOW(), INTERVAL 1 HOUR)
+					WHERE email=?`;
 				var token = randToken.uid(40);
-				connection.query(updateToken, [token], (results2,error2)=>{
+				connection.query(updateToken, [token,email], (results2,error2)=>{
 					res.json({
 						msg: 'loginSuccess',
 						name: results[0].name,
