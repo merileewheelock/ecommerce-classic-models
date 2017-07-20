@@ -29,7 +29,7 @@ class Home extends Component{
 		// loop through the product lines from the DB
 		this.state.productlines.map((row, index)=>{
 			plImages.push(
-				<div key={index} className="col-lg-4 col-md-6 col-sm-6 col-xs-12 pl-images">
+				<div key={index} className="col-lg-4 col-md-6 col-sm-6 col-xs-12 text-center pl-images">
 					<Link to={`/shop/${row.link}`}><img className="home-img" src={row.image} alt="home-images" /></Link>
 					<div className="text text-center">{row.productLine}</div>
 				</div>

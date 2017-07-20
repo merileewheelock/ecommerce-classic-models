@@ -53,7 +53,6 @@ class Cart extends Component{
 
 	render(){
 
-
 		var cartArray = [];
 		if(this.props.cartInfo.products !== undefined){
 			this.props.cartInfo.products.map((product,index)=>{

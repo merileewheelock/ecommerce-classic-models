@@ -54,8 +54,9 @@ class NavBar extends Component{
 	}else{
 		rightBar = [
 			<li key="1" className="userNameLoggedIn hidden-sm hidden-xs"><Link to="/users">Welcome, {this.props.registerInfo.name}</Link></li>,
-			<li key="2"><Link to="/cart">({totalItems}) items in your cart | (${totalPrice})</Link></li>,		
-			<li key="3"><Link to="/logout">Logout</Link></li>
+			<li key="2"><Link to="/cart">({totalItems}) items in your cart | (${totalPrice})</Link></li>,	
+			<li key="3"><a href="http://localhost:3001/">Logout</a></li>
+			// THIS <a> TAG FORCES THE PAGE TO RERENDER AND LOGOUT. CHANGE ADDRESS WHEN LIVE.	
 		]		
 	}
 

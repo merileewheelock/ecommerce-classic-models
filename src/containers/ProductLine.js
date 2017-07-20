@@ -66,7 +66,7 @@ class ProductLine extends Component{
 		// Check to see if msg = loginSuccess
 		// If so, they are logged in, let the ProductTableRow know
 		// If not, send appropriate props
-		if (this.props.loginInfo.token != undefined){
+		if (this.props.loginInfo.token !== undefined){
 			// these are the droids we're looking for
 			var loggedIn = true;
 			var token = this.props.loginInfo.token;
@@ -95,7 +95,7 @@ class ProductLine extends Component{
 
 		return(
 			<div>
-				<h1 className="text-center">{textHeader}</h1>
+				<h1 className="text-center col-sm-offset-1">{textHeader}</h1>
 				<div className="search-section col-sm-2 hidden-xs">
 					<div className="search-by">SEARCH BY</div>
 					<div className="table-head-sortable" onClick={()=>{this.sortTable("productName")}}>Name</div>

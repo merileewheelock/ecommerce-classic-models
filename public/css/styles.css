@@ -197,6 +197,16 @@ i {
   color: gray;
 }
 
+/* line 98, ../../compass/sass/_navbar.scss */
+ul li a {
+  color: gray;
+  text-decoration: none;
+}
+/* line 101, ../../compass/sass/_navbar.scss */
+ul li a:hover {
+  text-decoration: none;
+}
+
 /* line 1, ../../compass/sass/_home.scss */
 .pl-images {
   margin-bottom: 10px;

@@ -94,3 +94,11 @@ i{
 	padding-left: 20px;
 	color: gray;
 }
+
+ul li a {
+    color: gray;
+    text-decoration: none;
+    &:hover{
+    	text-decoration: none;
+    }
+}
