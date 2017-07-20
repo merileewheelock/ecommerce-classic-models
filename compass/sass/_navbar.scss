@@ -19,9 +19,12 @@
 	left: 20px;
 	background-color: #f8f8f8;
 	border: 1px solid #999;
+	height: 31px;
 	width: 150px;
 	text-align: left;
 	color: #777;
+	padding-top: 5px;
+	padding-left: 5px;
 	text-decoration: none;
 		&:hover{
 		color: black;
@@ -32,7 +35,7 @@
 $menu_links: 15;
 @for $i from 0 to $menu_links{
 	.dropdown-links a:nth-child(#{$i}){
-		top: 15 + ($i * 20)+px
+		top: 15 + ($i * 30)+px
 	}
 }
 
@@ -77,4 +80,17 @@ i{
 
 .slick-image img{
     width: 100vw;
+}
+
+.nav.navbar-nav.float-right .text-right a{
+	display: inline;
+}
+.nav.navbar-nav.float-right .userNameLoggedIn{
+	display: inline;
+}
+
+.smaller-shop-menu{
+	display: block;
+	padding-left: 20px;
+	color: gray;
 }

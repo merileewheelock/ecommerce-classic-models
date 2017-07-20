@@ -1,13 +1,69 @@
 .table-head{
-	color: blue;
 	text-decoration: none;
-	cursor: pointer;
 	font-size: 18px;
+}
+
+.table-head-sortable{
+	font-size: 18px;
+	cursor: pointer;
+	padding: 10px;
+	border-bottom: 1px solid lightgray;
+	color: #337ab7;
 	&:hover{
 		text-decoration: underline;
+		color: #1D5E9A;
 	}
+}
+
+.search-section{
+	margin-top: 10px;
+}
+
+.search-by{
+	font-size: 18px;
+	padding: 10px;
+	border-bottom: 1px solid lightgray;
+	background: #e6e6e6;
 }
 
 .msrp{
 	text-decoration: line-through;
+	color: crimson;
+}
+
+.buyPrice{
+	color: forestgreen;
+}
+
+.products{
+	border: 5px solid #e6e6e6;
+	margin: 10px;
+}
+
+.product-name{
+	font-size: 18px;
+	font-weight: bolder;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	margin-bottom: 5px;
+	border-bottom: 1px solid lightgray;
+}
+
+.product-boxes{
+	position: relative;
+}
+
+.addToCart{
+	position: absolute;
+	float: right;
+	float: bottom;
+}
+
+.product-buttons{
+	display: inline;
+	margin: 5px;
+}
+
+.myModal-item{
+	margin-bottom: 10px;
 }

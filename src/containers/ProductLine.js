@@ -95,23 +95,38 @@ class ProductLine extends Component{
 
 		return(
 			<div>
-				<h1>{textHeader}</h1>
-				<table className="table table-striped">
+				<h1 className="text-center">{textHeader}</h1>
+				<div className="search-section col-sm-2 hidden-xs">
+					<div className="search-by">SEARCH BY</div>
+					<div className="table-head-sortable" onClick={()=>{this.sortTable("productName")}}>Name</div>
+					<div className="table-head-sortable" onClick={()=>{this.sortTable("productScale")}}>Model Scale</div>
+					<div className="table-head-sortable" onClick={()=>{this.sortTable("productVendor")}}>Vendor</div>
+					<div className="table-head-sortable" onClick={()=>{this.sortTable("productDescription")}}>Description</div>
+					<div className="table-head-sortable" onClick={()=>{this.sortTable("quantityInStock")}}>Stock</div>
+					<div className="table-head-sortable" onClick={()=>{this.sortTable("buyPrice")}}>Price</div>
+				</div>
+				<div className="product-boxes text-center col-sm-10 col-xs-12">
+					{productTableArray}
+				</div>
+
+
+
+				{/*<table className="table table-striped">
 					<thead>
 						<tr>
-							<th className="table-head" onClick={()=>{this.sortTable("productName")}}>Product Name</th>
-							<th className="table-head" onClick={()=>{this.sortTable("productScale")}}>Model Scale</th>
-							<th className="table-head" onClick={()=>{this.sortTable("productVendor")}}>Vendor</th>
-							<th className="table-head" onClick={()=>{this.sortTable("productDescription")}}>Description</th>
-							<th className="table-head" onClick={()=>{this.sortTable("quantityInStock")}}>In Stock</th>
-							<th className="table-head" onClick={()=>{this.sortTable("buyPrice")}}>Your Price!</th>
-							<th className="table-head" onClick={()=>{this.sortTable("MSRP")}}>MSRP Price</th>
+							<th className="table-head-sortable" onClick={()=>{this.sortTable("productName")}}>Product Name</th>
+							<th className="table-head-sortable" onClick={()=>{this.sortTable("productScale")}}>Model Scale</th>
+							<th className="table-head-sortable" onClick={()=>{this.sortTable("productVendor")}}>Vendor</th>
+							<th className="table-head-sortable" onClick={()=>{this.sortTable("productDescription")}}>Description</th>
+							<th className="table-head-sortable" onClick={()=>{this.sortTable("quantityInStock")}}>In Stock</th>
+							<th className="table-head-sortable" onClick={()=>{this.sortTable("buyPrice")}}>Your Price!</th>
+							<th className="table-head-sortable" onClick={()=>{this.sortTable("MSRP")}}>MSRP Price</th>
 						</tr>
 					</thead>
 					<tbody>
 						{productTableArray}
 					</tbody>
-				</table>
+				</table>*/}
 			</div>
 		)
 	}

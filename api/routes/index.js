@@ -8,6 +8,8 @@ var bcrypt = require('bcrypt-nodejs');
 // include rand-token for generating user token
 var randToken = require('rand-token');
 
+var stripe = require('stripe')(config.stripeKey);
+
 // set up the connection with options
 var connection = mysql.createConnection({
 	host: config.host,
@@ -42,8 +44,53 @@ router.get('/productlines/:productLines/get', (req, res)=>{
 	})
 })
 
+router.post('/getCart',(req,res)=>{
+	const getUidQuery = `SELECT id from users WHERE token=?`
+	connection.query(getUidQuery, [req.body.token], (error,results)=>{
+		// console.log(req.body.token)
+		const getCartTotals = `SELECT SUM(buyPrice) as totalPrice, count(buyPrice) as totalItems FROM cart 
+			INNER JOIN products ON products.productCode = cart.productCode WHERE uid=?`
+		connection.query(getCartTotals,[results[0].id],(error3, results3)=>{
+			if(error3){
+				res.json(error3)
+			}else{
+				const getCartContents = `SELECT * FROM cart 
+					INNER JOIN products on products.productCode = cart.productCode
+					WHERE uid = ?`
+				connection.query(getCartContents, [results[0].id], (error4, results4)=>{
+					var finalCart = results3[0];
+					finalCart.products = results4;
+					res.json(finalCart);
+				})
+			}
+		})
+	})
+})
+
 router.post('/updateCart', (req, res)=>{
-	res.json({productNumber: req.body.productCode})
+	console.log(req.body)
+	const getUidQuery = `SELECT id from users WHERE token = ?`
+	connection.query(getUidQuery,[req.body.token],(error,results)=>{
+		if(error) throw error;
+		if(results.length == 0 ){
+			res.json({msg:"badToken"})
+		}else{
+			const addToCartQuery = `INSERT INTO cart (uid,productCode) 
+				VALUES (?,?)`;
+			connection.query(addToCartQuery,[results[0].id,req.body.productCode],(error2,results2)=>{
+				const getCartTotals = `SELECT SUM(buyPrice) as totalPrice, count(buyPrice) as totalItems FROM cart 
+					INNER JOIN products ON products.productCode = cart.productCode WHERE uid=?`
+				connection.query(getCartTotals,[results[0].id],(error3,results3)=>{
+					if(error3){
+						res.json(error3)
+					}else{
+						res.json(results3[0]);
+					}
+				})
+			})
+		}
+	});
+
 });
 
 router.post('/register', (req, res)=>{
@@ -118,16 +165,19 @@ router.post('/register', (req, res)=>{
 router.post('/login', (req, res)=>{
 	var email = req.body.email;
 	var password = req.body.password;
-	var checkLoginQuery = "SELECT * FROM users WHERE email = ?";
+	var checkLoginQuery = `SELECT * FROM users
+		INNER JOIN customers ON users.uid = customers.customerNumber
+		WHERE users.email = ?`;
 	connection.query(checkLoginQuery, [email], (error,results)=>{
 		if (error) throw error;
 
-		if (results. length === 0){
+		if (results.length === 0){
 			// This email ain't in the database
 			res.json({
 				msg: 'badUsername'
 			})
 		}else{
+			
 			// The username is valid. See if the password is...
 			var checkHash = bcrypt.compareSync(password, results[0].password);
 			// checkHash will be true or false
@@ -137,10 +187,12 @@ router.post('/login', (req, res)=>{
 				const updateToken = `Update users SET token=?, token_exp=DATE_ADD(NOW(), INTERVAL 1 HOUR)
 					WHERE email=?`;
 				var token = randToken.uid(40);
-				connection.query(updateToken, [token,email], (results2,error2)=>{
+				connection.query(updateToken, [token,email], (error2, results2)=>{
+					// console.log(error2)
+					// console.log(results2)
 					res.json({
 						msg: 'loginSuccess',
-						name: results[0].name,
+						name: results[0].customerName,
 						token: token
 					})
 				})
@@ -150,6 +202,34 @@ router.post('/login', (req, res)=>{
 					msg: 'wrongPassword'
 				})
 			}
+		}
+	})
+})
+
+router.post('/stripe', (req, res)=>{
+	var userToken = req.body.token;
+	var stripeToken = req.body.stripeToken;
+	var amount = req.body.amount;
+	// strip module which is associated with our secret key has a create method,
+	// which takes an object of options to charge
+	stripe.charges.create({
+		amount: amount,
+		currency: 'usd',
+		source: stripeToken,
+		description: "Charges for Classic Models"
+	}, (error, charge)=>{
+		if (error){
+			res.json({
+				msg: error
+			})
+		}else{
+			// Insert stuff from cart that was just paid into:
+			// -orders
+			// -order details
+			// Then remove it from cart
+			res.json({
+				msg: 'paymentSuccess'
+			})
 		}
 	})
 })
