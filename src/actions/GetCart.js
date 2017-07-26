@@ -1,7 +1,7 @@
 import $ from 'jquery';
 
 export default function(token){
-	console.log(token)
+	// console.log(token)
 	var dataToPass = {
 		token: token
 	}

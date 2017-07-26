@@ -9,6 +9,7 @@ import Register from './containers/Register';
 import Login from './containers/Login';
 import ProductLine from './containers/ProductLine';
 import Cart from './containers/Cart';
+import ThankYou from './components/ThankYou';
 
 
 class App extends Component {
@@ -25,6 +26,7 @@ class App extends Component {
 						<Route exact path="/login" component={Login} />
 						<Route path="/shop/:productLine" component={ProductLine}/>
 						<Route exact path="/cart" component={Cart} />
+						<Route exact path="/thankyou" component={ThankYou} />
 					</div>
 				</div>
 			</Router>

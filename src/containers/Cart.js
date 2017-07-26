@@ -52,9 +52,17 @@ class Cart extends Component{
     }
 
 	render(){
-
+		console.log(this.props.cartInfo.products)
 		var cartArray = [];
-		if(this.props.cartInfo.products !== undefined){
+		
+		if(this.props.cartInfo.products === undefined){
+			return(
+				<div className="text-center">
+					<h3>Your cart is empty! Get shopping or <Link to="/login">login</Link>.</h3>
+					<img src="http://www.airsoftcloud.com/media/wysiwyg/emptycart.png" />
+				</div>
+			)
+		}else if(this.props.cartInfo.products !== undefined){
 			this.props.cartInfo.products.map((product,index)=>{
 				console.log(product)
 				cartArray.push(
@@ -67,13 +75,6 @@ class Cart extends Component{
 					/>
 				)
 			})
-		}else if(this.props.cartInfo.products === undefined){
-			return(
-				<div className="text-center">
-					<h3>Your cart is empty! Get shopping or <Link to="/login">login</Link>.</h3>
-					<img src="http://www.airsoftcloud.com/media/wysiwyg/emptycart.png" />
-				</div>
-			)
 		}
 
 		return(

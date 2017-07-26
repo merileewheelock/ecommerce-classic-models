@@ -45,20 +45,20 @@ class NavBar extends Component{
 			)
 		})
 	
-	if(this.props.registerInfo.name === undefined){
-		var rightBar = [
-			<li key="1"><Link to="/login">Login</Link></li>,
-			<li key="2"><Link to="/register">Register</Link></li>,
-			<li key="3"><Link to="/cart">(0) items in your cart | ($0.00)</Link></li>		
-		]
-	}else{
-		rightBar = [
-			<li key="1" className="userNameLoggedIn hidden-sm hidden-xs"><Link to="/users">Welcome, {this.props.registerInfo.name}</Link></li>,
-			<li key="2"><Link to="/cart">({totalItems}) items in your cart | (${totalPrice})</Link></li>,	
-			<li key="3"><a href="http://localhost:3001/">Logout</a></li>
-			// THIS <a> TAG FORCES THE PAGE TO RERENDER AND LOGOUT. CHANGE ADDRESS WHEN LIVE.	
-		]		
-	}
+		if(this.props.registerInfo.name === undefined){
+			var rightBar = [
+				<li key="1"><Link to="/login">Login</Link></li>,
+				<li key="2"><Link to="/register">Register</Link></li>,
+				<li key="3"><Link to="/cart">(0) items in your cart | ($0.00)</Link></li>		
+			]
+		}else{
+			rightBar = [
+				<li key="1" className="userNameLoggedIn hidden-sm hidden-xs"><Link to="/users">Welcome, {this.props.registerInfo.name}</Link></li>,
+				<li key="2"><Link to="/cart">({totalItems}) items in your cart | (${totalPrice})</Link></li>,	
+				<li key="3"><a href="http://localhost:3001/">Logout</a></li>
+				// THIS <a> TAG FORCES THE PAGE TO RERENDER AND LOGOUT. CHANGE ADDRESS WHEN LIVE.	
+			]		
+		}
 
 		return(
 			<div>
