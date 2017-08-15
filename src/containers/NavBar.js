@@ -55,7 +55,7 @@ class NavBar extends Component{
 			rightBar = [
 				<li key="1" className="userNameLoggedIn hidden-sm hidden-xs"><Link to="/users">Welcome, {this.props.registerInfo.name}</Link></li>,
 				<li key="2"><Link to="/cart">({totalItems}) items in your cart | (${totalPrice})</Link></li>,	
-				<li key="3"><a href="http://localhost:3001/">Logout</a></li>
+				<li key="3"><a href="http://classicmodels.merileewheelock.com/">Logout</a></li>
 				// THIS <a> TAG FORCES THE PAGE TO RERENDER AND LOGOUT. CHANGE ADDRESS WHEN LIVE.	
 			]		
 		}
