@@ -70,7 +70,7 @@ router.post('/getCart',(req,res)=>{
 })
 
 router.post('/updateCart', (req, res)=>{
-	console.log(req.body)
+	console.log(req.body);
 	const getUidQuery = `SELECT id from users WHERE token = ?`
 	connection.query(getUidQuery,[req.body.token],(error,results)=>{
 		if(error) throw error;
@@ -84,7 +84,7 @@ router.post('/updateCart', (req, res)=>{
 					INNER JOIN products ON products.productCode = cart.productCode WHERE uid=?`
 				connection.query(getCartTotals,[results[0].id],(error3,results3)=>{
 					if(error3){
-						res.json(error3)
+						res.json(error3);
 					}else{
 						res.json(results3[0]);
 					}
@@ -133,7 +133,7 @@ router.post('/register', (req, res)=>{
 			// Run the query (for now autoset the sales rep to 1337)
 			connection.query(insertIntoCust,[name,city,state,1337,creditLimit],(error, results)=>{
 				// Get the ID that was used in the customers insert
-				const newID = results.insertId
+				const newID = results.insertId;
 				// Get the current timestamp
 				var currTimeStamp = parseInt(Date.now() / 1000);
 				// Set up a token for this user. We will give this back to React
