@@ -239,7 +239,7 @@ router.post('/stripe', (req,res)=>{
 				// console.log(results2)
 				// console.log("==========================")
 				const customerId = results2[0].uid;
-				const date = new Date()
+				const date = new Date();
 				// console.log(date)
 				const insertIntoOrders = `INSERT INTO orders
 					(orderDate,requiredDate,comments,status,customerNumber)
@@ -285,8 +285,8 @@ router.post('/stripe', (req,res)=>{
 						// When ALL the promises in orderDetailPromises have called resolve...
 						// the .all function will run. It has a .then that we can use
 						Promise.all(orderDetailPromises).then((finalValues)=>{
-							console.log("All promises finished")
-							console.log(finalValues)
+							console.log("All promises finished");
+							console.log(finalValues);
 							const deleteQuery = `
 								DELETE FROM cart WHERE uid = ${results2[0].id}
 							`
