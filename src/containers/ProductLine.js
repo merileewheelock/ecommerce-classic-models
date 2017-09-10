@@ -3,7 +3,7 @@ import $ from 'jquery';
 import ProductTableRow from '../components/ProductTableRow';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
-import UpdateCart from '../actions/UpdateCart'
+import UpdateCart from '../actions/UpdateCart';
 
 class ProductLine extends Component{
 	constructor(props) {

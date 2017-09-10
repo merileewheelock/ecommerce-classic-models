@@ -1,7 +1,7 @@
-import React, {Component} from 'react'
-import {Link} from 'react-router-dom'
-import $ from 'jquery'
-import {connect} from 'react-redux'
+import React, {Component} from 'react';
+import {Link} from 'react-router-dom';
+import $ from 'jquery';
+import {connect} from 'react-redux';
 
 class NavBar extends Component{
 	constructor(props) {
@@ -121,4 +121,4 @@ function mapStateToProps(state){
 }
 
 // export default NavBar
-export default connect(mapStateToProps)(NavBar)
+export default connect(mapStateToProps)(NavBar);
