@@ -5,9 +5,12 @@ export default function(){
 		<div>
 			<h1>CONTACT</h1>
 			<hr />
-			<p>Merilee Wheelock</p>
-			<p>merilee.wheelock@gmail.com</p>
-			<p><a href="http://www.merileewheelock.com" target="_blank">www.merileewheelock.com</a></p>
+			<p>Please find my contact information below.</p>
+			<p>
+				Merilee Wheelock<br />
+				merilee.wheelock@gmail.com<br />
+				<a href="http://www.merileewheelock.com" target="_blank">www.merileewheelock.com</a>
+			</p>
 		</div>
 	)
 }
