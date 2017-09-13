@@ -97,7 +97,7 @@ class ProductLine extends Component{
 			<div>
 				<h1 className="text-center col-sm-offset-1">{textHeader}</h1>
 				<div className="search-section col-sm-2 hidden-xs">
-					<div className="search-by">SEARCH BY</div>
+					<div className="search-by">SORT BY</div>
 					<div className="table-head-sortable" onClick={()=>{this.sortTable("productName")}}>Name</div>
 					<div className="table-head-sortable" onClick={()=>{this.sortTable("productScale")}}>Model Scale</div>
 					<div className="table-head-sortable" onClick={()=>{this.sortTable("productVendor")}}>Vendor</div>
