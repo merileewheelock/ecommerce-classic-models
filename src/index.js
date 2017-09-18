@@ -16,7 +16,7 @@ import RootReducer from './reducers/rootReducer';
 import reduxPromise from 'redux-promise';
 
 // const theStore = createStore(RootReducer);
-const theStore = applyMiddleware(reduxPromise)(createStore)(RootReducer)
+const theStore = applyMiddleware(reduxPromise)(createStore)(RootReducer);
 
 // ReactDOM.render takes 2 args... 1. What, 2. Where
 ReactDOM.render(

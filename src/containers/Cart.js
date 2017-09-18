@@ -52,7 +52,7 @@ class Cart extends Component{
     }
 
 	render(){
-		console.log(this.props.cartInfo.products)
+		console.log(this.props.cartInfo.products);
 		var cartArray = [];
 		
 		if(this.props.cartInfo.products === undefined){
