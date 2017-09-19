@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import { Form, FormGroup, ControlLabel, FormControl, Button, Col ,MenuItem} from 'react-bootstrap'
+import { Form, FormGroup, ControlLabel, FormControl, Button, Col, MenuItem} from 'react-bootstrap';
 // Our action needs bindActionCreators from redux
 import  {bindActionCreators} from 'redux';
 // Get the registerAction function which runs on submission
@@ -23,13 +23,13 @@ class Register extends Component{
 	handleRegistration(event){
 		event.preventDefault();
 		// console.log("User SUbmitted the form!!")
-		var name = event.target[0].value
-		var email = event.target[1].value
-		var accountType = "Customer"
-		var password = event.target[3].value
-		var city = event.target[4].value
-		var state = event.target[5].value
-		var salesRep = event.target[6].value
+		var name = event.target[0].value;
+		var email = event.target[1].value;
+		var accountType = "Customer";
+		var password = event.target[3].value;
+		var city = event.target[4].value;
+		var state = event.target[5].value;
+		var salesRep = event.target[6].value;
 		var error = false;
 
 		//Name
