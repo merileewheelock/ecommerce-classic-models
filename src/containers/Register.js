@@ -38,7 +38,7 @@ class Register extends Component{
 			error=true;
 		}
 		else{ 
-			nameError = "success"
+			nameError = "success";
 		}
 
 		//Email
@@ -67,9 +67,9 @@ class Register extends Component{
 	}
 
 	componentWillReceiveProps(nextProps) {
-		console.log("=======================")
-		console.log(nextProps.registerResponse)
-		console.log("=======================")
+		// console.log("=======================")
+		// console.log(nextProps.registerResponse)
+		// console.log("=======================")
 
 		if(nextProps.registerResponse.msg === 'userInserted'){
 			this.props.history.push('/');
