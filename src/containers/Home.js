@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import $ from 'jquery';
 
-// We need some glue between react and redux. This component/containersneeds to know about redux state.
+// We need some glue between react and redux. This component/containers needs to know about redux state.
 // The answer is the connect method from the react-redux module. The glue.
 // import { connect } from 'react-redux';
 

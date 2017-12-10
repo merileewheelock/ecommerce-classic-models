@@ -6,7 +6,7 @@ import App from './App';
 // Go get the createStore and applyMiddleware method from the redux module
 import { createStore, applyMiddleware } from 'redux';
 
-// Import the Propdiver from react-redux so react and redux can talk
+// Import the Provider from react-redux so react and redux can talk
 import { Provider } from 'react-redux';
 
 // Import the rootReducer so we can give it to the store... fill those shelves!
